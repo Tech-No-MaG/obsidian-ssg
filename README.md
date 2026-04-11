@@ -20,8 +20,6 @@ Obsidian SSG — это инструмент для автоматической
 
 **Демо:** [https://tech-no-mag.github.io/obsidian-ssg/](https://tech-no-mag.github.io/obsidian-ssg/)
 
-![Граф знаний](https://user-images.githubusercontent.com/screenshot.png) *(скриншот графа)*
-
 ---
 
 ## ✨ Возможности
