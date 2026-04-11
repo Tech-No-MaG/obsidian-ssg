@@ -78,8 +78,8 @@ python -m src.cli --config config.yaml
    ```
 
    ### 📁 Структура проекта
-   
-   obsidian-ssg/
+```
+obsidian-ssg/
 ├── .github/workflows/      # CI/CD пайплайны
 ├── src/
 │   ├── cli.py              # Точка входа
@@ -92,3 +92,4 @@ python -m src.cli --config config.yaml
 ├── tests/                  # Unit тесты
 ├── config.yaml             # Конфигурация
 └── requirements.txt        # Зависимости
+```
