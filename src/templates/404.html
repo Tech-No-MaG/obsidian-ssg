@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Страница не найдена | {{ site_title }}{% endblock %}
+
+{% block content %}
+<div class="index-page" style="text-align: center; padding: 4rem 2rem;">
+    <h1 style="font-size: 6rem; margin: 0; color: var(--text-accent);">404</h1>
+    <p style="font-size: 1.5rem; color: var(--text-faint); margin: 1rem 0;">
+        Ой! Этой заметки не существует...
+    </p>
+    <p style="color: var(--text-faint); margin-bottom: 2rem;">
+        Возможно, ссылка ведёт на несозданную заметку
+    </p>
+    <a href="index.html" class="tag" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem;">
+        🏠 Вернуться на главную
+    </a>
+</div>
+{% endblock %}

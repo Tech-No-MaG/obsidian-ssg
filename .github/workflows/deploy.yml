@@ -1,0 +1,59 @@
+name: Deploy Obsidian SSG to GitHub Pages
+
+# Запускать при push в ветку main
+on:
+  push:
+    branches: ["main"]
+  
+  # Позволяет запустить вручную через интерфейс GitHub
+  workflow_dispatch:
+
+# Права доступа
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Отменяем старые сборки при новом пуше
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  # ===== ЗАДАЧА 1: СБОРКА САЙТА =====
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout репозитория
+        uses: actions/checkout@v4
+      
+      - name: 🐍 Настройка Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'  # Кэшируем pip для скорости
+      
+      - name: 📦 Установка зависимостей
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: 🔨 Сборка сайта
+        run: python -m src.cli --config config.yaml
+      
+      - name: 📤 Сохранение артефакта
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+  # ===== ЗАДАЧА 2: ПУБЛИКАЦИЯ =====
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build  # Запускается после build
+    steps:
+      - name: 🚀 Публикация на GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ site_title }}{% endblock %}</title>
+    <link rel="stylesheet" href="static/css/main.css">
+</head>
+<body>
+    <header class="site-header">
+    <nav>
+        <a href="index.html" class="logo">🏠 {{ site_title }}</a>
+        
+        <!-- Поле поиска -->
+        <div class="search-container">
+            <input type="text" id="global-search" placeholder="🔍 Поиск по заметкам..." autocomplete="off">
+            <div id="search-results" class="search-results-dropdown"></div>
+        </div>
+        
+        <a href="graph.html" class="nav-link">🕸️ Граф</a>
+    </nav>
+</header>
+
+    <main class="content">
+        {% block content %}
+        <!-- Сюда подставится контент конкретных страниц -->
+        {% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <p>Сгенерировано с ❤️ Obsidian SSG</p>
+    </footer>
+        <!-- Подключение данных для поиска и сам скрипт -->
+    <script src="static/js/search-data.js"></script>
+    <script src="static/js/search.js"></script>
+</body>
+</body>
+</html>

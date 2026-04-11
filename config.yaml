@@ -1,0 +1,6 @@
+vault_path: "./test-vault"
+output_dir: "./dist"
+site_title: "Пепе вики" 
+include_graph: true
+enable_search: true
+theme: "dark"

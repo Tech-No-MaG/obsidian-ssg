@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Граф знаний | {{ site_title }}{% endblock %}
+
+{% block content %}
+<<div class="graph-page">
+    <header class="graph-header">
+        <div class="graph-nav">
+            <a href="index.html" class="back-link">← Назад к заметкам</a>
+            <h1>🕸️ Граф знаний</h1>
+        </div>
+        <p class="graph-description">
+            Визуализация связей между заметками. 
+            <br>🖱️ Тяни узлы мышкой • 🔄 Крути колёсико для зума • 👆 Кликни для перехода
+        </p>
+    </header>
+    
+    <div id="graph-container">
+        <div id="graph-info">
+            <span>Узлов: <strong>{{ nodes | length }}</strong></span>
+            <span>Связей: <strong>{{ links | length }}</strong></span>
+        </div>
+    </div>
+</div>
+
+<!-- Подключаем D3.js -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<!-- Передаём данные из Python в JavaScript -->
+<script>
+    const graphData = {
+        nodes: {{ nodes | tojson }},
+        links: {{ links | tojson }}
+    };
+</script>
+
+<!-- Подключение скрипта к визуализации -->
+<script src="static/js/graph.js"></script>
+{% endblock %}

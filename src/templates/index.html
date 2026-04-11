@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="index-page">
+    <h1>📚 Все заметки</h1>
+    
+    <!-- Облако тегов -->
+    <div id="tag-cloud" class="tag-cloud"></div>
+    
+    <!-- Список заметок -->
+    <div id="notes-container" class="notes-list">
+        {% for slug, note in notes.items() %}
+        <div class="note-item" data-tags="{{ note.tags | join(' ') }}">
+            <a href="{{ slug }}.html" class="note-link">{{ note.title }}</a>
+            <div class="note-tags">
+                {% for tag in note.tags %}
+                    <span class="tag small filter-tag" data-tag="{{ tag }}">#{{ tag }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Скрипт фильтрации -->
+<script src="static/js/tag-filter.js"></script>
+{% endblock %}

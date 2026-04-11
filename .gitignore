@@ -1,0 +1,25 @@
+# Виртуальное окружение Python
+venv/
+env/
+
+# Python кэш
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Редакторы
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Операционные системы
+.DS_Store
+Thumbs.db
+
+# Папка сборки (её создаст GitHub Actions сам)
+dist/
+
+# Логи
+*.log
